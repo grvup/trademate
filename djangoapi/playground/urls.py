@@ -5,7 +5,8 @@ from . import views
 
 urlpatterns = [
     path('register/', views.register_user), 
-    path('predict/',views.predict_stocks)
+    path('predict/',views.predict_stocks),
+    path('login/',views.login_user)
     # path('add/', views.add_person)
      
       # Example API endpoint

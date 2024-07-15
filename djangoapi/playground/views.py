@@ -2,6 +2,7 @@
 
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.hashers import check_password
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse,HttpResponse
 # from tensorflow.keras.layers import LSTM
@@ -56,9 +57,33 @@ def register_user(request):
         if password == cnfpassword:
             if user_seri.is_valid():
                 user_seri.save()
-                return JsonResponse("Added Successfully",safe = False)
+                return JsonResponse({'message': 'Added Successfully', 'email': email},safe = False)
             return JsonResponse("Failed to add",safe=False)
         return JsonResponse("password not match",safe=False)
+
+
+@csrf_exempt
+def login_user(request):
+    if request.method == 'POST':
+        user_data = JSONParser().parse(request)
+        email = user_data.get('email')
+        password = user_data.get('password')
+        # print(password)
+        if not email:
+            return JsonResponse({'error': 'Please provide an email.'}, status=400)
+
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return JsonResponse({'error': 'Email not found. Please sign up.'}, status=404)
+
+        if password==user.password:
+            return JsonResponse({'message': 'Login successful.'}, status=200)
+        else:
+            # print((user.password))
+            return JsonResponse({'error': 'Incorrect password.'},status=401)
+
+    return JsonResponse({'error': 'Invalid request method.'}, status=405)
 
 @csrf_exempt
 def predict_stocks(request):
@@ -66,6 +91,7 @@ def predict_stocks(request):
         uploaded_file = request.FILES['csvFile']
         decoded_file = uploaded_file.read().decode('utf-8')
         symbols_df = pd.read_csv(StringIO(decoded_file))
+        # print(symbols_df)
         clusters_df = pd.read_csv('cluster_labels.csv')
         merged_df = pd.merge(symbols_df, clusters_df, on='Symbol', how='left')
 
@@ -91,7 +117,7 @@ def predict_stocks(request):
                 return None
 
         numerical_value = (open_min_avg+open_max_avg)/2  # Replace this with your numerical value
-
+        print(numerical_value)
         def calculate_distance(value, min_value, max_value):
             midpoint = (min_value + max_value) / 2
             return abs(value - midpoint)

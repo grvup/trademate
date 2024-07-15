@@ -21,6 +21,7 @@ from playground import urls as playground_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('playground/',include(playground_urls))
+    
 ]
 
 # from django.contrib import admin
