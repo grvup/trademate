@@ -43,7 +43,7 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
               <li className="nav-item">
-                <a className="nav-link active text-success" aria-current="page" href="#">Home</a>
+                <a className="nav-link active text-success" aria-current="page" href="/">Home</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link text-success" href="#">Trade</a>
@@ -63,12 +63,12 @@ function Header() {
 
               <div className="nav-item dropdown" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={dropdownRef}>
                 {user && <div className="d-flex">
-                  <img src="https://tse2.mm.bing.net/th?id=OIP.6UhgwprABi3-dz8Qs85FvwHaHa&pid=Api&P=0&h=180" alt="Profile" className="rounded-circle me-2" style={{ width: '40px', height: '40px' }} />
+                  <img src="https://tse2.mm.bing.net/th?id=OIP.6UhgwprABi3-dz8Qs85FvwHaHa&pid=Api&P=0&h=180" alt="Profile" className="rounded-circle me-2" style={{ width: '26px', height: '26px' }} />
                   <span className="nav-link dropdown-toggle text-success" role="button" aria-expanded={isOpen}>{user.email}</span>
                   {/* <a  href="#" >
                   </a> */}
                   <ul className={`dropdown-menu custom-dropdown${isOpen ? ' show' : ''}`} aria-labelledby="navbarDropdown">
-                      <li><a className="dropdown-item text-success" href="#">History</a></li>
+                      <li><a className="dropdown-item text-success" href="/history">History</a></li>
                       {/* <li><a className="dropdown-item" href="#">...</a></li> */}
                       <li><hr className="dropdown-divider" /></li>
                       <li><span className="dropdown-item"  onClick={handleLogout} style={{ cursor:'pointer' }}>Logout</span></li>

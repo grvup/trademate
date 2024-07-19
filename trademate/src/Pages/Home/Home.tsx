@@ -30,15 +30,19 @@ function Home() {
       setCsvFile(selectedFile);
     }
   };
-  console.log(csvFile)
+  // console.log(csvFile)
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!csvFile) {
-      console.error('No file selected');
+      alert('No file selected');
       return;
     }
     const formData = new FormData();
     formData.append('csvFile', csvFile);
+    if(user)
+    {
+      formData.append('email', user.email);
+    }
 
     try {
       // const csrfToken = getCookie('csrftoken');
@@ -168,9 +172,9 @@ function Home() {
                 //   </ul>
                 // </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
-                {/* {symbols.map((ticker, index) => (
+                {symbols.map((ticker, index) => (
                   <StockChart key={index} ticker={ticker} />
-                ))} */}
+                ))}
               </div>
               )}
                {/* <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>

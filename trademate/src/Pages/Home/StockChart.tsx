@@ -57,7 +57,7 @@ const StockChart: React.FC<Props> = ({ ticker }) => {
       }
     };
 
-    const intervalId = setInterval(fetchLivePrice, 20000);
+    const intervalId = setInterval(fetchLivePrice, 200000);
 
     fetchLivePrice();
 
