@@ -24,9 +24,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'django-insecure-@gy9sk&bm9*s(rk^8(dh)2ztis^t&g-4w-i7sqjtk8r&qc8fxq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','.vercel.app','trademate.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','.vercel.app','trademate']
 
 
 # Application definition
