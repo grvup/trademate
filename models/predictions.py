@@ -75,12 +75,48 @@ for symbol in symbols:
     # for i, prediction in enumerate(predictions, 1):
     #     print(f"Day {i}: Predicted Open Price: {prediction[0]}")
 df_predictions = pd.DataFrame(all_predictions, columns=['Symbol', 'Predicted_Price'])
+# print(df_predictions)
+differences = []
 
+# Group the data by 'Symbol'
+grouped = df_predictions.groupby('Symbol')
+for symbol, group_df in grouped:
+    # Get the first and last values for 'Predicted_Price'
+    first_value = group_df['Predicted_Price'].iloc[0]
+    last_value = group_df['Predicted_Price'].iloc[-1]
+
+    # Subtract the last value from the first value
+    difference = last_value - first_value
+
+    # Append the difference to the list
+    differences.append((symbol,difference))
+
+# Print the list of differences
+# print("Symbols and Differences:")
+# for symbol, difference in differences:
+#     print(f"Symbol: {symbol}, Difference: {difference}")
 # Save predictions to a CSV file
-predictions_csv_file = 'predictions_10_days_2.csv'
-df_predictions.to_csv(predictions_csv_file, index=False)
+df_original = pd.read_csv(csv_file_path)
+df_differences = pd.DataFrame(differences, columns=['Symbol', 'Difference'])
 
-print("Predictions saved to", predictions_csv_file)
+# Merge the two DataFrames on the 'Symbol' column
+df_merged = pd.merge(df_original, df_differences, on='Symbol', how='left')
+
+
+df_sorted = df_merged.groupby('Cluster').apply(lambda x: x.sort_values('Difference', ascending=False)).reset_index(drop=True)
+
+# Save the sorted DataFrame to a new CSV file
+sorted_csv = 'sorted_file.csv'  # Replace with the desired file path for the sorted CSV
+df_sorted.to_csv(sorted_csv, index=False)
+
+print("Sorted CSV file saved to:", sorted_csv)
+
+
+
+# predictions_csv_file = 'predictions_10_days_4.csv'
+# df_predictions.to_csv(predictions_csv_file, index=False)
+
+# print("Predictions saved to", predictions_csv_file)
 
 # df_predictions = pd.DataFrame(all_predictions)
 

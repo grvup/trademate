@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@gy9sk&bm9*s(rk^8(dh)2ztis^t&g-4w-i7sqjtk8r&qc8fxq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','.vercel.app','trademate.com']
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -86,10 +87,11 @@ DATABASES = {
         'NAME': 'trademate',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb://localhost:27017',
-            'port': 27017,
-            # 'username': 'upadhyaygaurav450',  
-            # 'password': 'XXG3atyGBpeYlygL', 
+            'host': 'mongodb+srv://upadhyaygaurav450:XXG3atyGBpeYlygL@cluster0.9qxz0bo.mongodb.net/',
+            'username': 'upadhyaygaurav450',  
+            'password': 'XXG3atyGBpeYlygL', 
+            'authSource': 'admin',
+            'authMechanism': 'SCRAM-SHA-1'
         }
     }
 }
@@ -131,7 +133,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

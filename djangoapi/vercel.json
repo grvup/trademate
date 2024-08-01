@@ -1,0 +1,17 @@
+{
+    "version": 2,
+    "builds": [
+      { 
+        "src": "trademate/wsgi.py", 
+        "use": "@vercel/python",
+        "config":{"maxLambdaSize":"15mb","runtime":"python 3.11.9"}
+    }
+    ],
+    "routes": [
+      { 
+        "src": "/(.*)", 
+        "dest": "trademate/wsgi.py" 
+        }
+    ]
+}
+  

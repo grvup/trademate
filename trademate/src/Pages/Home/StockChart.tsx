@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Plot from 'react-plotly.js';
 import axios from 'axios';
 
-const API_KEY = 'UpHUFhjWSvIcDPCANN3V7PmMu4YYyCJD';
+const API_KEY = '4RXIIWBwIMnLW9LMzrbpssdIwJH7wxYE';
 
 interface StockDatum {
   date: string;
