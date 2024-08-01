@@ -8,12 +8,13 @@
     },
     {
       "src": "trademate/package.json",
-      "use": "@vercel/next"
+     "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
     }
   ],
   "routes": [
     {
-      "src": "/djangoapi/(.*)",
+      "src": "/api/(.*)",
       "dest": "djangoapi/djangoapi/wsgi.py"
     },
     {
