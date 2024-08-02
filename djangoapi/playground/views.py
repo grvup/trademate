@@ -40,12 +40,13 @@ import numpy as np
 
 
 # Modelpath  = 'C:/Users/gaura/pr/seperate Files/A_model.keras'
-Modelpath = 'C:/Users/gaura/OneDrive/Desktop/Pr/models/AKAM_stock_lstm_model.keras'
+# Modelpath = 'C:/Users/gaura/OneDrive/Desktop/Pr/models/AKAM_stock_lstm_model.keras'
 
 
-model = load_model(Modelpath)
+# model = load_model(Modelpath)
 
-
+def index(request):
+    return render(request, 'playground/index.html')
 
 @csrf_exempt
 def register_user(request):

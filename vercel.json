@@ -1,25 +1,17 @@
 {
-  "version": 2,
   "builds": [
     {
-      "src": "djangoapi/djangoapi/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "50mb" }
-    },
-    {
-      "src": "trademate/package.json",
+      "src": "webpack.config.js",
       "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
+      "config": {
+        "distDir": "dist"
+      }
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "djangoapi/djangoapi/wsgi.py"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/trademate/$1"
+      "dest": "/index.html"
     }
   ]
 }
