@@ -102,7 +102,7 @@ export default function Login() {
                         <div id="remme">
                             <label htmlFor="remember"><input type="checkbox" name="remember" value="remember" />Remember Me</label>
                         </div>
-                        <a href="#">Forgot Your Password?</a>
+                        {/* <a href="#">Forgot Your Password?</a> */}
                     </div>
                     <div className="submitbtn">                   
                         <input type="submit" name="loginsubmit" value="Log In" />

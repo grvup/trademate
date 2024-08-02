@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import logo from '../logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Link } from 'react-router-dom';
@@ -10,7 +9,6 @@ import { clearUser } from '../userSlice';
 import './header.css'
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn,setIsLoggedIn]=useState(false);
 
   const user = useSelector((state: RootState) => state.user.userInfo);
 
@@ -34,7 +32,7 @@ function Header() {
       <div className="Header text-danger col-lg-12">
       <nav className="navbar navbar-expand-lg bg-body-tertiary border border-solid border-black border-top border-left">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             <img src="https://tse3.mm.bing.net/th?id=OIP.ggEWXv9b2N4NOvtLHB-p0gAAAA&pid=Api&P=0&h=180" alt="Bootstrap" width="300" height="60" />
           </a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +44,7 @@ function Header() {
                 <a className="nav-link active text-success" aria-current="page" href="/">Home</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-success" href="#">Trade</a>
+                <a className="nav-link text-success" href="/">Trade</a>
               </li>
               {/* <li className="nav-item dropdown" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={dropdownRef}>
                 <a className="nav-link dropdown-toggle text-success" href="#" role="button" aria-expanded={isOpen}>

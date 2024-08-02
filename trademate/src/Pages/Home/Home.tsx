@@ -1,15 +1,10 @@
 import React, { useState ,FormEvent} from 'react';
-import Chart from 'chart.js/auto';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import starry from "../../images/business-8256831.jpg";
 // import { makeStyles } from '@mui/styles';
-import Header from '../../Header/header';
 import StockChart from './StockChart';
 
 import { useSelector } from 'react-redux';
@@ -18,11 +13,10 @@ import { RootState } from '../../store';
 function Home() {
   // const classes = useStyles();
   const [csvFile, setCsvFile] = useState<File | null>(null);
-  const [jsonData, setJsonData] = useState(null);
   const [symbols, setSymbols] = useState([]);
   const user = useSelector((state: RootState) => state.user.userInfo);
   console.log(user);
-  const tickers = ['MMM'];
+  // const tickers = ['MMM'];
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
