@@ -1,17 +1,18 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "webpack.config.js",
+      "src": "trademate/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "trademate/build"
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "trademate/build/$1"
     }
   ]
 }
