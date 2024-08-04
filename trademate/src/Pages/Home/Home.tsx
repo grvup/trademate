@@ -40,7 +40,7 @@ function Home() {
 
     try {
       // const csrfToken = getCookie('csrftoken');
-      const response = await fetch('https://your-backend-url.cloudfunctions.net/playground/predict/', {
+      const response = await fetch('https://trademate-deploy.et.r.appspot.com.cloudfunctions.net/playground/predict/', {
         method: 'POST',
         body: formData,
       });

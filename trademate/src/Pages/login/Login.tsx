@@ -36,7 +36,7 @@ export default function Login() {
         e.preventDefault();
         try {
             const csrftoken = getCookie('csrftoken');
-            const response = await axios.post('https://your-backend-url.cloudfunctions.net/playground/login/', {
+            const response = await axios.post('https://trademate-deploy.et.r.appspot.com.cloudfunctions.net/playground/login/', {
                 email: formData.email,
                 password: formData.password,
             }, {

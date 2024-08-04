@@ -67,7 +67,7 @@ function History() {
 
     const fetchHistory = async () => {
       try {
-        const response = await fetch('https://your-backend-url.cloudfunctions.net/playground/history/', {
+        const response = await fetch('https://trademate-deploy.et.r.appspot.com.cloudfunctions.net/playground/history/', {
           method: 'POST',
           body: user.email,
         });
