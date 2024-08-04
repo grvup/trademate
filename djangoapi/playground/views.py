@@ -45,8 +45,6 @@ import numpy as np
 
 # model = load_model(Modelpath)
 
-def index(request):
-    return render(request, 'playground/index.html')
 
 @csrf_exempt
 def register_user(request):

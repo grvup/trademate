@@ -21,8 +21,7 @@ from playground import urls as playground_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('playground/',include(playground_urls)),
-    path('', include(playground_urls)),
-    
+
 ]
 from django.conf import settings
 from django.conf.urls.static import static

@@ -34,7 +34,7 @@ export default function Register() {
         e.preventDefault();
         try {
             const csrftoken = getCookie('csrftoken');
-            const response = await axios.post('http://127.0.0.1:8000/playground/register/', {
+            const response = await axios.post('https://your-backend-url.cloudfunctions.net/playground/register/', {
                 email: formData.email,
                 password: formData.password,
                 confirmPassword: formData.confirmPassword,

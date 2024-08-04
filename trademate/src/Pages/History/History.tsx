@@ -67,7 +67,7 @@ function History() {
 
     const fetchHistory = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/playground/history/', {
+        const response = await fetch('https://your-backend-url.cloudfunctions.net/playground/history/', {
           method: 'POST',
           body: user.email,
         });

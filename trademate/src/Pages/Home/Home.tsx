@@ -40,7 +40,7 @@ function Home() {
 
     try {
       // const csrfToken = getCookie('csrftoken');
-      const response = await fetch('http://127.0.0.1:8000/playground/predict/', {
+      const response = await fetch('https://your-backend-url.cloudfunctions.net/playground/predict/', {
         method: 'POST',
         body: formData,
       });
